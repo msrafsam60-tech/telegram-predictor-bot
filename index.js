@@ -1,8 +1,18 @@
 const TelegramBot = require('node-telegram-bot-api');
 
-// 🔑 তোমার Telegram Bot Token এখানে বসাও (BotFather থেকে নেওয়া)
-const TOKEN = 'YOUR_TELEGRAM_BOT_TOKEN_HERE';
-const bot = new TelegramBot(TOKEN, { polling: true });
+// Railway Variables থেকে BOT_TOKEN নেওয়া হবে
+const TOKEN = process.env.BOT_TOKEN;
+
+// যদি BOT_TOKEN না থাকে তাহলে বট বন্ধ হবে
+if (!TOKEN) {
+    console.error("❌ BOT_TOKEN not found!");
+    process.exit(1);
+}
+
+// Bot চালু
+const bot = new TelegramBot(TOKEN, {
+    polling: true
+});
 
 // ব্যবহারকারীদের টাইমার ও লাস্ট প্রেডিকশন ট্র্যাক রাখার অবজেক্ট
 const userSessions = {};
