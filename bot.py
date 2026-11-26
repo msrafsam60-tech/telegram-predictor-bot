@@ -87,22 +87,10 @@ logging.basicConfig(
 )
 
 # ─── CONFIG ───────────────────────────────────────────────────────────────────
-BOT_TOKEN          = os.environ.get("9118903818:AAEz6nUheLVl319JhnC1l3LxEtUdONmZNa8", "").strip()
-OWNER_ID           = int(os.environ.get("8431135719", "0"))
-API_ID             = int(os.environ.get("39158266", "0"))
-API_HASH           = os.environ.get("1739704a94749c2e9572c0beb018c503", "").strip()
-
-# Fail early with a clear message instead of crashing later in Telegram clients.
-_missing = [name for name, value in {
-    "BOT_TOKEN": BOT_TOKEN,
-    "OWNER_ID": OWNER_ID,
-    "API_ID": API_ID,
-    "API_HASH": API_HASH,
-}.items() if not value]
-if _missing:
-    raise RuntimeError(
-        "Missing required environment variable(s): " + ", ".join(_missing)
-    )
+BOT_TOKEN          = os.environ.get("BOT_TOKEN", "")
+OWNER_ID           = int(os.environ.get("OWNER_ID", "0"))
+API_ID             = int(os.environ.get("API_ID", "0"))
+API_HASH           = os.environ.get("API_HASH", "")
 ACCOUNTS_FILE      = "accounts.json"
 ADMIN_FILE         = "admins.json"
 PORT               = int(os.environ.get("PORT", "10000"))
